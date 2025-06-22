@@ -1,4 +1,4 @@
-import {ref } from 'vue';
+import { ref } from 'vue';
 
 export function useConverter() {
     const currencies = ref([]);
@@ -30,5 +30,11 @@ export function useConverter() {
         }
     }
 
-    return {currencies, fetchCurrencies};
+    async function fetchConvert(amount, from, to) {        
+        const conversion = await fetch(`${converterApiUrl}convert?${converterApiKey}&from=${from}&to=${to}&amount=${amount}`)
+        const res = await conversion.json();
+        return res.value;
+    }
+
+    return {currencies, fetchCurrencies, fetchConvert};
 }
