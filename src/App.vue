@@ -21,9 +21,9 @@ const converterApi = useConverter();
 converterApi.fetchCurrencies();
 
 const fromValue = ref(0); // assumption: default initial value of from currency
-const fromCurrency = ref('pln'); // assumption: default initial from currency
+const fromCurrency = ref('PLN'); // assumption: default initial from currency
 const toValue = ref(0); // assumption: default initial value of to currency
-const toCurrency = ref('eur'); // assumption: default initial to currency
+const toCurrency = ref('EUR'); // assumption: default initial to currency
 </script>
 
 <style scoped></style>

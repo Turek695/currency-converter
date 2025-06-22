@@ -4,6 +4,8 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 
 ## Project Setup
 
+copy .env-example to .env and fill currencybeacon.com api key
+
 ```sh
 npm install
 ```

@@ -3,6 +3,8 @@ import {ref } from 'vue';
 export function useConverter() {
     const currencies = ref([]);
     const fetchInProgress = ref(false);
+    const converterApiKey = 'api_key='+import.meta.env.VITE_CURRENCY_API_KEY;
+    const converterApiUrl = import.meta.env.VITE_CURRENCY_API_URL;
 
     async function fetchCurrencies() {
         if (fetchInProgress.value) {
@@ -11,9 +13,17 @@ export function useConverter() {
 
         fetchInProgress.value = true;
         try {
-            const res = {currencies: ['pln', 'gbp', 'eur']};
-            currencies.value = res.currencies;
-        } catch(e) {
+            const res = await fetch(`${converterApiUrl}currencies?${converterApiKey}`);
+            const data = await res.json();
+            const currs = [];
+            Object.keys(data).forEach(key => {
+                if (['meta', 'response'].includes(key)) {
+                    return;
+                }
+                currs.push(data[key].short_code);
+            })
+            currencies.value = currs;
+        } catch(e){
             console.error(e);
         } finally {
             fetchInProgress.value = false;
