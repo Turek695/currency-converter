@@ -13,11 +13,10 @@
 import {ref} from 'vue';
 import ConverterInput from '@/components/inputs/ConverterInput.vue';
 
-const fromValue = ref(0);
-const fromCurrency = ref(0);
-const toValue = ref(0);
-const toCurrency = ref(0);
-
+const fromValue = ref(0); // assumption: default initial value of from currency
+const fromCurrency = ref('pln'); // assumption: default initial from currency
+const toValue = ref(0); // assumption: default initial value of to currency
+const toCurrency = ref('eur'); // assumption: default initial to currency
 const currencies = ref(['pln', 'eur']);
 </script>
 
